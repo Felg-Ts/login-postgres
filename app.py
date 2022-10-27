@@ -93,6 +93,16 @@ def ids(appd):
         titulo = "Current weather data"
         titulo2 = "Current weather data"
 
+        connection.cursor.execute("select * from users")
+        connection.rows=cursor.fetchall()
+        for row in rows:
+            print (row)
+
+        for entity in jsondecoded:
+            entityName = entity["name"]
+            if entityName.startswith(name):
+                listadatos.append(entity)
+
         file = open("city.json", encoding="utf8")
         content = file.read()
         jsondecoded = json.loads(content)
