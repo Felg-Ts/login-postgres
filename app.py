@@ -27,31 +27,6 @@ def forms(appd):
 @app.route('/ids/<appd>',methods=["Post"])
 def ids(appd):
 
-    if appd == "dma":
-
-        listadatos = []
-
-        rutaid = "/dma/"
-        titulo = "Current weather data"
-        titulo2 = "Current weather data"
-
-        file = open("city.json", encoding="utf8")
-        content = file.read()
-        jsondecoded = json.loads(content)
-
-        name = request.form.get("tdma")
-
-        for entity in jsondecoded:
-            entityName = entity["name"]
-            if entityName.startswith(name):
-                listadatos.append(entity)
-
-        if len(listadatos) == 0:
-            return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
-
-        return render_template("ids.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos,rutaid=rutaid)
-
-
 # Pruebas
 
     if appd == "dma":
@@ -71,9 +46,6 @@ def ids(appd):
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
         return render_template("ids.html",titulo=titulo,titulo2=titulo2,rows=listadatos,rutaid=rutaid)
-
-
-
 
 #Resultado programa 1
 
