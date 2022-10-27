@@ -17,9 +17,9 @@ def postgres():
         return row
     except Exception as ex:
         print(ex)
-    finally:
-        connection.close()
-        print("Conexión finalizada.")
+    #finally:
+    #    connection.close()
+    #    print("Conexión finalizada.")
 
 
 #config.cursor.execute("select * from users")
