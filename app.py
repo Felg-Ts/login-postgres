@@ -36,7 +36,8 @@ def ids(appd):
         titulo = "Current weather data"
         titulo2 = "Current weather data"
 
-        rows=postgres
+        for rows in postgres():
+             listadatos.append(rows)
 
         #cursor=config.connection.cursor()        
         #cursor.execute("select version()")
@@ -48,7 +49,7 @@ def ids(appd):
         #for row in connection.rows:
         #    print (row)
 
-        if len(rows) == 0:
+        if len(listadatos) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
         return render_template("ids.html",titulo=titulo,titulo2=titulo2,rows=listadatos,rutaid=rutaid)
