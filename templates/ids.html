@@ -5,10 +5,10 @@
 {% block table %}
 <div class="datagrid">
     <table>
-        <thead><tr><th>Nombre</th><th>País</th><th>Id</th></tr></thead>
+        <thead><tr><th>ID</th><th>Nombre-usuario</th><th>Password</th></tr></thead>
         <tbody>
             {% for a in listadatos %}
-            <tr class="alt"><td >{{ a.name }}</td><td>{{ a.country }}</td><td><a href="{{rutaid}}{{a.id}}">{{ a.id }}</a></td></tr>
+            <tr class="alt"><td >{{ a.1 }}</td><td>{{ a.2 }}</td><td>{{ a.3 }}</a></td></tr>
             {% endfor %}
         </tbody>
     </table>
