@@ -1,6 +1,5 @@
 #Librerías
 from flask import Flask, request,render_template,session 
-import json
 import requests
 
 app = Flask(__name__)	
