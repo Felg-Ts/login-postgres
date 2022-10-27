@@ -74,7 +74,7 @@ def ids(appd):
         if len(listadatos) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
-        return render_template("ids.html",titulo=titulo,titulo2=titulo2,rows=listadatos,rutaid=rutaid)
+        return render_template("ids.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos,rutaid=rutaid)
 
 #Resultado programa 1
 
