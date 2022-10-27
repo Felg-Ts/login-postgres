@@ -10,16 +10,6 @@ app = Flask(__name__)
 def inicio():
     return render_template("inicio.html",titulo="Inicio")
 
-#Pequeña descripción de cada programa.
-
-@app.route('/detalles/<appd>/',methods=["GET"])
-def detalles(appd):
-    if appd == "dma":
-        titulo = "Detalles de Current weather data"
-        detalle = "Acceda a los datos meteorológicos actuales de cualquier lugar de la Tierra, incluidas más de 200.000 ciudades."
-        titulo2 = "Detalles de Current weather data"
-    return render_template("detalles.html",appd=appd,titulo=titulo,detalle=detalle,titulo2=titulo2)
-
 #Formularios para los 3 programas.
 
 @app.route('/forms/<appd>',methods=["GET"])
