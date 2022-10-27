@@ -1,7 +1,6 @@
 #Librerías
-from flask import Flask, request,render_template,session 
+from flask import Flask, request,render_template
 import connection
-import requests
 
 app = Flask(__name__)	
 
