@@ -38,8 +38,8 @@ def ids(appd):
         titulo2 = "Current weather data"
 
         connection.cursor.execute("select * from users")
-        connection.rows=cursor.fetchall()
-        for row in rows:
+        connection.rows=connection.cursor.fetchall()
+        for row in connection.rows:
             print (row)
 
         if len(rows) == 0:
