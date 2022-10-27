@@ -1,6 +1,6 @@
 #Librerías
 from flask import Flask, request,render_template
-import connection
+from connection import connection
 
 app = Flask(__name__)	
 
