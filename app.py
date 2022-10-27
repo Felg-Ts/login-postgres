@@ -42,7 +42,7 @@ def ids(appd):
         for row in connection.rows:
             print (row)
 
-        if len(rows) == 0:
+        if len(connection.rows) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
         return render_template("ids.html",titulo=titulo,titulo2=titulo2,rows=listadatos,rutaid=rutaid)
