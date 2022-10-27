@@ -1,6 +1,8 @@
 #Librerías
 from flask import Flask,render_template
-from config import postgres
+#from config import postgres
+import psycopg2
+
 app = Flask(__name__)	
 
 #inicio de la aplicación
@@ -36,8 +38,28 @@ def ids(appd):
         titulo = "Current weather data"
         titulo2 = "Current weather data"
 
-        for rows in postgres():
-             listadatos.append(rows)
+        try:
+            connection = psycopg2.connect(
+                host="192.168.50.45",
+                database="appweb-db",
+                user="appwebuser",
+                password="appwebpass"
+            )
+            print("Conexión realizada")
+            cursor=connection.cursor()        
+            cursor.execute("select * from users")
+            row=cursor.fetchone()
+            for rows in row:
+                listadatos.append(rows)            
+            #print(row)
+        except Exception as ex:
+            print(ex)
+        finally:
+            connection.close()
+            print("Conexión finalizada.")
+
+        #for rows in postgres():
+        #     listadatos.append(rows)
 
         #cursor=config.connection.cursor()        
         #cursor.execute("select version()")
