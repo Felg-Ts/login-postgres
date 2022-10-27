@@ -48,7 +48,7 @@ def ids(appd):
             print("Conexión realizada")
             cursor=connection.cursor()        
             cursor.execute("select * from users")
-            row=cursor.fetchone()
+            row=cursor.fetchall()
             for rows in row:
                 listadatos.append(rows)            
             #print(row)
