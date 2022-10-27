@@ -1,5 +1,6 @@
 #Librerías
 from flask import Flask, request,render_template,session 
+import connection
 import requests
 
 app = Flask(__name__)	
@@ -129,7 +130,6 @@ def dma(id):
         return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="El id introducido no coincide con ninguna ciudad. Compruebe que está escrito correctamente",urlform="/forms/dma")
     
     return render_template("Current-weather-data.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos)
-
 
 
 if __name__ == '__main__':
