@@ -11,7 +11,7 @@ def postgres():
         )
         print("Conexión realizada")
         cursor=connection.cursor()        
-        cursor.execute("select version()")
+        cursor.execute("select * from users")
         row=cursor.fetchone()
         #print(row)
         return row
