@@ -36,7 +36,7 @@ def ids(appd):
         titulo = "Current weather data"
         titulo2 = "Current weather data"
 
-        cursor=connection.cursor()        
+        cursor=config.connection.cursor()        
         cursor.execute("select version()")
         row=cursor.fetchone()
         print(row)
