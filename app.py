@@ -37,10 +37,14 @@ def ids(appd):
         titulo = "Current weather data"
         titulo2 = "Current weather data"
 
-        connection.cursor.execute("select * from users")
-        connection.rows=connection.cursor.fetchall()
-        for row in connection.rows:
-            print (row)
+        cursor=connection.connection.cursor()        
+        cursor.execute("select version()")
+        row=cursor.fetchone()
+        print(row)
+        #connection.cursor.execute("select * from users")
+        #connection.rows=connection.cursor.fetchall()
+        #for row in connection.rows:
+        #    print (row)
 
         if len(connection.rows) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
