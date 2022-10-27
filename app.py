@@ -1,5 +1,4 @@
 #Librerías
-import os
 from flask import Flask, request,render_template,session 
 import json
 import requests
@@ -135,5 +134,4 @@ def dma(id):
 
 
 if __name__ == '__main__':
-    port=os.environ["PORT"]
-    app.run('0.0.0.0',int(port), debug=True)
+    app.run("0.0.0.0",5000,debug=True)
