@@ -1,6 +1,6 @@
 #Librerías
 from flask import Flask,render_template
-from config import *
+from config import postgres
 app = Flask(__name__)	
 
 #inicio de la aplicación
@@ -36,16 +36,19 @@ def ids(appd):
         titulo = "Current weather data"
         titulo2 = "Current weather data"
 
-        cursor=config.connection.cursor()        
-        cursor.execute("select version()")
-        row=cursor.fetchone()
-        print(row)
+        rows=postgres
+
+        #cursor=config.connection.cursor()        
+        #cursor.execute("select version()")
+        #row=cursor.fetchone()
+        #print(row)
+
         #connection.cursor.execute("select * from users")
         #connection.rows=connection.cursor.fetchall()
         #for row in connection.rows:
         #    print (row)
 
-        if len(connection.rows) == 0:
+        if len(rows) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
         return render_template("ids.html",titulo=titulo,titulo2=titulo2,rows=listadatos,rutaid=rutaid)

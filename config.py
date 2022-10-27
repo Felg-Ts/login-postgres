@@ -8,6 +8,7 @@ try:
         password="appwebpass"
     )
 
+def postgres():
     print("Conexión realizada")
     cursor=connection.cursor()        
     cursor.execute("select version()")
@@ -15,7 +16,9 @@ try:
     print(row)
 except Exception as ex:
     print(ex)
-
+#finally:
+    connection.close()
+    print("Conexión finalizada.")
 
 
 
@@ -25,6 +28,3 @@ except Exception as ex:
 #    print (row)
 
 
-#finally:
-#    connection.close()
-#    print("Conexión finalizada.")
