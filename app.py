@@ -194,33 +194,6 @@ def ptdd2(date):
 
     return render_template("5-day-weather-forecast.html",titulo=titulo,titulo2=titulo2,listadatosptdd=listadatosptdd,listadatosptdd2=listadatosptdd2,date=date)
 
-#Resultado formulario 3.
-
-@app.route('/crd/acda',methods=["Post"])
-def cdr():
-
-    listadatos = []
-
-    titulo = "Air Pollution API"
-    titulo2 = "Air Pollution API"
-
-    file = open("city.json", encoding="utf8")
-    content = file.read()
-    jsondecoded = json.loads(content)
-
-    name = request.form.get("tacda")
-
-    for entity in jsondecoded:
-        entityName = entity["name"]
-        if entityName.startswith(name):
-            listadatos.append(entity)
-    
-    if len(listadatos) == 0:
-        return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/acda")
-    
-    return render_template("crd.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos)
-
-
 if __name__ == '__main__':
     port=os.environ["PORT"]
     app.run('0.0.0.0',int(port), debug=True)
