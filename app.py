@@ -132,37 +132,6 @@ def dma(id):
     
     return render_template("Current-weather-data.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos)
 
-#Resultado programa 2-1
-
-@app.route('/ptdd/<int:id>',methods=["GET"])
-def ptdd1(id):
-
-    listadatosptdd = []
-    listadatosptdd2 = []
-
-    session['idsession'] = id
-    titulo = "5 day weather forecast"
-    titulo2 = "5 day weather forecast"
-
-    url = "https://api.openweathermap.org/data/2.5/forecast"
-    querystring = {"id":f"{id}","appid":"5a74fb5df668d605eaef2012ed31eed8","units":"metric","lang":"38"}
-    headers = {
-        'Cache-Control': 'no-cache'
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    if response.status_code==200:
-        datos=response.json()
-        for i in datos.get("list"):
-            listadatosptdd.append(i)
-            for d in i["weather"]:
-                listadatosptdd2.append(d)
-    
-    if len(listadatosptdd) == 0:
-        return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="El id introducido no coincide con ninguna ciudad. Compruebe que está escrito correctamente",urlform="/forms/ptdd")
-
-    return render_template("5-day-weather-forecast.html",titulo=titulo,titulo2=titulo2,listadatosptdd=listadatosptdd,listadatosptdd2=listadatosptdd2)
-
-
 
 
 if __name__ == '__main__':
