@@ -18,14 +18,6 @@ def detalles(appd):
         titulo = "Detalles de Current weather data"
         detalle = "Acceda a los datos meteorológicos actuales de cualquier lugar de la Tierra, incluidas más de 200.000 ciudades."
         titulo2 = "Detalles de Current weather data"
-    elif appd == "ptdd":
-        titulo = "Detalles de 5 day weather forecast"
-        detalle = "El pronóstico de 5 días está disponible en cualquier lugar o ciudad. Incluye datos de pronóstico del tiempo con pasos de 3 horas."
-        titulo2 = "Detalles de 5 day weather forecast"
-    elif appd == "acda":
-        titulo = "Detalles de Air Pollution API"
-        detalle = "Esta herramienta proporciona datos de contaminación del aire actuales, pronosticados e históricos para cualquier coordenada del mundo."
-        titulo2 = "Detalles Air Pollution API"
     return render_template("detalles.html",appd=appd,titulo=titulo,detalle=detalle,titulo2=titulo2)
 
 #Formularios para los 3 programas.
@@ -38,18 +30,6 @@ def forms(appd):
         texto = "Nombre-de-una-ciudad"
         titulo2 = "Formulario de Current weather data"
         getform = "tdma"
-    elif appd == "ptdd":
-        titulo = "Formulario de 5 day weather forecast"
-        ruta = "/ids/ptdd"
-        texto = "Nombre-de-una-ciudad"
-        titulo2 = "Formulario de 5 day weather forecast"
-        getform = "tptdd"
-    elif appd == "acda":
-        titulo = "Formulario de Air Pollution API"
-        ruta = "/crd/acda"
-        texto = "Nombre-de-una-ciudad"
-        titulo2 = "Formualrio de Air Pollution API"
-        getform = "tacda"
     return render_template("forms.html",titulo=titulo,titulo2=titulo2,ruta=ruta,texto=texto,getform=getform)
 
 #Resultados de los formualarios 1 y 2.
