@@ -5,7 +5,6 @@ import json
 import requests
 
 app = Flask(__name__)	
-app.secret_key = '7r7fCCb@YVZ&3ZIHo^XImtpfC#tDmbw'
 
 #inicio de la aplicación
 
@@ -221,31 +220,6 @@ def cdr():
     
     return render_template("crd.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos)
 
-#Resultado programa 3.
-
-@app.route('/acda/<lat>/<lon>',methods=["GET"])
-def acda(lat, lon):
-
-    listadatos = []
-
-    titulo = "Air Pollution API"
-    titulo2 = "Air Pollution API"
-
-    url = "https://api.openweathermap.org/data/2.5/air_pollution"
-    querystring = {"lat":f"{lat}","lon":f"{lon}","appid":"5a74fb5df668d605eaef2012ed31eed8","units":"metric","lang":"38"}
-    headers = {
-        'Cache-Control': 'no-cache'
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    if response.status_code==200:
-        datos=response.json()
-        for i in datos.get("list"):
-            listadatos.append(i)
-    
-    if len(listadatos) == 0:
-        return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="La lon y lat no coinciden con la de ninguna ciudad. Compruebe que está escrito correctamente",urlform="/forms/acda")
-
-    return render_template("Air-Pollution-API.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos)
 
 if __name__ == '__main__':
     port=os.environ["PORT"]
