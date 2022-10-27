@@ -98,26 +98,10 @@ def ids(appd):
         for row in rows:
             print (row)
 
-        for entity in jsondecoded:
-            entityName = entity["name"]
-            if entityName.startswith(name):
-                listadatos.append(entity)
-
-        file = open("city.json", encoding="utf8")
-        content = file.read()
-        jsondecoded = json.loads(content)
-
-        name = request.form.get("tdma")
-
-        for entity in jsondecoded:
-            entityName = entity["name"]
-            if entityName.startswith(name):
-                listadatos.append(entity)
-
-        if len(listadatos) == 0:
+        if len(rows) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
-        return render_template("ids.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos,rutaid=rutaid)
+        return render_template("ids.html",titulo=titulo,titulo2=titulo2,rows=listadatos,rutaid=rutaid)
 
 
 
