@@ -1,7 +1,6 @@
 #Librerías
 from flask import Flask,render_template
-from config import connection
-
+import config
 app = Flask(__name__)	
 
 #inicio de la aplicación
@@ -37,7 +36,7 @@ def ids(appd):
         titulo = "Current weather data"
         titulo2 = "Current weather data"
 
-        cursor=connection.cursor()        
+        cursor=config.connection.cursor()        
         cursor.execute("select version()")
         row=cursor.fetchone()
         print(row)

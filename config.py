@@ -19,12 +19,12 @@ except Exception as ex:
 
 
 
-config.cursor.execute("select * from users")
-config.rows=cursor.fetchall()
-for row in rows:
-    print (row)
+#config.cursor.execute("select * from users")
+#config.rows=cursor.fetchall()
+#for row in rows:
+#    print (row)
 
 
-finally:
-    connection.close()
-    print("Conexión finalizada.")
+#finally:
+#    connection.close()
+#    print("Conexión finalizada.")
