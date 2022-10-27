@@ -162,37 +162,8 @@ def ptdd1(id):
 
     return render_template("5-day-weather-forecast.html",titulo=titulo,titulo2=titulo2,listadatosptdd=listadatosptdd,listadatosptdd2=listadatosptdd2)
 
-#Resultado programa 2-2
 
-@app.route('/ptdd/<date>/',methods=["GET"])
-def ptdd2(date):
 
-    id = session.get("idsession", None)
-
-    listadatosptdd = []
-    listadatosptdd2 = []
-
-    titulo = "5 day weather forecast"
-    titulo2 = "5 day weather forecast"
-
-    url = "https://api.openweathermap.org/data/2.5/forecast"
-    querystring = {"id":f"{id}","appid":"5a74fb5df668d605eaef2012ed31eed8","units":"metric","lang":"38"}
-    headers = {
-        'Cache-Control': 'no-cache'
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    if response.status_code==200:
-        datos=response.json()
-        for i in datos.get("list"):
-            if i["dt_txt"].startswith(date):
-                listadatosptdd.append(i)
-                for d in i["weather"]:
-                    listadatosptdd2.append(d)
-
-    if len(listadatosptdd) == 0:
-        return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="No se ha encontrado la fecha indicada. Compruebe que está escrita correctamente",urlform="/forms/ptdd")
-
-    return render_template("5-day-weather-forecast.html",titulo=titulo,titulo2=titulo2,listadatosptdd=listadatosptdd,listadatosptdd2=listadatosptdd2,date=date)
 
 if __name__ == '__main__':
     port=os.environ["PORT"]
