@@ -12,7 +12,7 @@ def inicio():
 
 #Página despues de inicio.
 
-@app.route('/form/<appd>',methods=["GET"])
+@app.route('/form/<appd>',methods=["POST"])
 def ids(appd):
 
     if appd == "log":
