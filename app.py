@@ -13,18 +13,6 @@ def inicio():
 
 #Página despues de inicio.
 
-@app.route('/forms/<appd>',methods=["GET"])
-def forms(appd):
-    if appd == "dma":
-        titulo = "Formulario de Current weather data"
-        ruta = "/ids/dma"
-        texto = "Nombre-de-una-ciudad"
-        titulo2 = "Formulario de Current weather data"
-        getform = "tdma"
-    return render_template("forms.html",titulo=titulo,titulo2=titulo2,ruta=ruta,texto=texto,getform=getform)
-
-#Resultados de los formualarios 1 y 2.
-
 @app.route('/ids/<appd>',methods=["Post"])
 def ids(appd):
 
