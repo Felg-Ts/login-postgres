@@ -8,20 +8,18 @@ app = Flask(__name__)
 
 @app.route('/',methods=["GET"])
 def inicio():
-    return render_template("inicio.html",titulo="Inicio")
+    return render_template("login.html",titulo="Login")
 
 #Página despues de inicio.
 
-@app.route('/ids/<appd>',methods=["GET"])
+@app.route('/form/<appd>',methods=["GET"])
 def ids(appd):
 
-    if appd == "dma":
+    if appd == "log":
 
         listadatos = []
 
         rutaid = "/dma/"
-        titulo = "Current weather data"
-        titulo2 = "Current weather data"
 
         try:
             connection = psycopg2.connect(
@@ -46,7 +44,7 @@ def ids(appd):
         if len(listadatos) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
-        return render_template("ids.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos,rutaid=rutaid)
+        return render_template("site.html",titulo="site",listadatos=listadatos,rutaid=rutaid)
 
 if __name__ == '__main__':
     app.run("0.0.0.0",5000,debug=True)
