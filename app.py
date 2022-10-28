@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/',methods=["GET"])
 def inicio():
-    return render_template("login.html",titulo="Login")
+    return render_template("login.html",titulo="Login",errormesaje=" ")
 
 #Página despues de inicio.
 
@@ -41,7 +41,7 @@ def ids(appd):
             print("Conexión finalizada.")
     
         if len(listadatos) == 0:
-                return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
+                return render_template("login.html",titulo="Login",errormesaje="usuario o contraseña incorrecto")
 
         else:
             listadatos = []
