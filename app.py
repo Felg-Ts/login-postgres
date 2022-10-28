@@ -76,31 +76,5 @@ def ids(appd):
 
         return render_template("ids.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos,rutaid=rutaid)
 
-#Resultado programa 1
-
-@app.route('/dma/<int:id>',methods=["GET"])
-def dma(id):
-
-    listadatos = []
-
-    titulo = "Current weather data"
-    titulo2 = "Current weather data"
-
-    url = "https://api.openweathermap.org/data/2.5/weather"
-    querystring = {"id":f"{id}","appid":"5a74fb5df668d605eaef2012ed31eed8","units":"metric","lang":"38"}
-    headers = {
-        'Cache-Control': 'no-cache'
-        }
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    if response.status_code==200:
-        datos=response.json()
-        listadatos.append(datos)
-
-    if len(listadatos) == 0:
-        return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="El id introducido no coincide con ninguna ciudad. Compruebe que está escrito correctamente",urlform="/forms/dma")
-    
-    return render_template("Current-weather-data.html",titulo=titulo,titulo2=titulo2,listadatos=listadatos)
-
-
 if __name__ == '__main__':
     app.run("0.0.0.0",5000,debug=True)
