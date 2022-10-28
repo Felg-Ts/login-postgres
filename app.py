@@ -5,13 +5,13 @@ import psycopg2
 
 app = Flask(__name__)	
 
-#inicio de la aplicación
+#Formulario inicio de la aplicación
 
 @app.route('/',methods=["GET"])
 def inicio():
     return render_template("inicio.html",titulo="Inicio")
 
-#Formularios para los 3 programas.
+#Página despues de inicio.
 
 @app.route('/forms/<appd>',methods=["GET"])
 def forms(appd):
