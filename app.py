@@ -20,6 +20,8 @@ def ids(appd):
         listadatos = []
         usernameform = request.form.get("formusername")
         passform = request.form.get("formpass")
+        print(usernameform)
+        print(passform)
 
         try:
             connection = psycopg2.connect(
@@ -32,10 +34,9 @@ def ids(appd):
             cursor=connection.cursor()        
             cursor.execute(f"select * from users where username='{usernameform}' and password='{passform}'")
             row=cursor.fetchall()
+            print(row)
             for rows in row:
-                print(rows)
                 listadatos.append(rows)
-            print(listadatos)
         except Exception as ex:
             print(ex)
         finally:
