@@ -56,6 +56,7 @@ input {
 }
 input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
 
+.contenedor div { text-align: center; }
 .datagrid div { display: inline-block; }
 .datagrid table { border-collapse: collapse; text-align: left; width: 100%; } 
 .datagrid {font: normal 12px/150% Arial, Helvetica, sans-serif; background: #fff; overflow: hidden; border: 1px solid #006699; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; }
