@@ -12,7 +12,7 @@ def inicio():
 
 #Página despues de inicio.
 
-@app.route('/ids/<appd>',methods=["Post"])
+@app.route('/ids/<appd>',methods=["GET"])
 def ids(appd):
 
     if appd == "dma":
