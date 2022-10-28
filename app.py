@@ -33,6 +33,7 @@ def ids(appd):
             cursor.execute(f"select * from users where username='{usernameform}' and password='{passform}'")
             row=cursor.fetchall()
             for rows in row:
+                print(rows)
                 listadatos.append(rows)
             print(listadatos)
         except Exception as ex:
