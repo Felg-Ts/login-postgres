@@ -16,8 +16,6 @@ def inicio():
 @app.route('/ids/<appd>',methods=["Post"])
 def ids(appd):
 
-# Pruebas
-
     if appd == "dma":
 
         listadatos = []
