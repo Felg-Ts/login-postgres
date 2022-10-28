@@ -30,7 +30,7 @@ def ids(appd):
             )
             print("Conexión realizada")
             cursor=connection.cursor()        
-            cursor.execute("select * from users")
+            cursor.execute("select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre and users.username='usuario2'")
             row=cursor.fetchall()
             for rows in row:
                 listadatos.append(rows)            
