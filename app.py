@@ -1,6 +1,5 @@
 #Librerías
 from flask import Flask,render_template
-#from config import postgres
 import psycopg2
 
 app = Flask(__name__)	
