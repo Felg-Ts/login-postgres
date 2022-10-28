@@ -34,7 +34,7 @@ def ids(appd):
             row=cursor.fetchall()
             for rows in row:
                 listadatos.append(rows)
-            nombre= listadatos[0]           
+            nombre= listadatos[0][0]
         except Exception as ex:
             print(ex)
         finally:
