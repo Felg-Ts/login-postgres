@@ -1,16 +1,14 @@
 {% extends "base.html" %}
 {% block title %}{{titulo}}{% endblock %}
 {% block body %}
-<div class="contenedor">
-    <div class="centrado">
-        <table>
-            <thead><tr><th>Nombre-usuario</th><th>Modulo</th><th>Horas_Semanales</th><th>Profesor</th></tr></thead>
-            <tbody>
-                {% for a in listadatos %}
-                <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</a></td></tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<div class="center">
+    <table>
+        <thead><tr><th>Nombre-usuario</th><th>Modulo</th><th>Horas_Semanales</th><th>Profesor</th></tr></thead>
+        <tbody>
+            {% for a in listadatos %}
+            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
