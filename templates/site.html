@@ -3,10 +3,10 @@
 {% block body %}
 <div class="datagrid">
     <table>
-        <thead><tr><th>ID</th><th>Nombre-usuario</th><th>Password</th></tr></thead>
+        <thead><tr><th>Nombre-usuario</th><th>Modulo</th><th>Horas_Semanales</th><th>Profesor</th></tr></thead>
         <tbody>
             {% for a in listadatos %}
-            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</a></td></tr>
+            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</a></td></tr>
             {% endfor %}
         </tbody>
     </table>
