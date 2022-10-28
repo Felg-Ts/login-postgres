@@ -40,9 +40,9 @@ def ids(appd):
             #print(row)
         except Exception as ex:
             print(ex)
-        #finally:
-        #    connection.close()
-        #    print("Conexión finalizada.")
+        finally:
+            connection.close()
+            print("Conexión finalizada.")
 
         #for rows in postgres():
         #     listadatos.append(rows)
