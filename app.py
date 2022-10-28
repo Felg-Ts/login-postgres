@@ -33,8 +33,8 @@ def ids(appd):
             cursor.execute("select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre and users.username='usuario2'")
             row=cursor.fetchall()
             for rows in row:
-                listadatos.append(rows)            
-            #print(row)
+                listadatos.append(rows)
+            nombre= listadatos[0]           
         except Exception as ex:
             print(ex)
         finally:
@@ -44,7 +44,7 @@ def ids(appd):
         if len(listadatos) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
-        return render_template("site.html",titulo="site",listadatos=listadatos,rutaid=rutaid)
+        return render_template("site.html",titulo="site",listadatos=listadatos,rutaid=rutaid,nombre=nombre)
 
 if __name__ == '__main__':
     app.run("0.0.0.0",5000,debug=True)
