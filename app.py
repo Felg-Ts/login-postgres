@@ -23,7 +23,7 @@ def ids(appd):
 
         try:
             connection = psycopg2.connect(
-            host="192.168.50.45",
+            host="192.168.50.31",
             database="appweb-db",
             user="appwebuser",
             password="appwebpass"
@@ -50,7 +50,7 @@ def ids(appd):
 
             try:
                 connection = psycopg2.connect(
-                 host="192.168.50.45",
+                 host="192.168.50.31",
                  database="appweb-db",
                  user="appwebuser",
                  password="appwebpass"
