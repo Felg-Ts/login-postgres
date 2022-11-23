@@ -1,7 +1,6 @@
 #Librerías
 from flask import Flask,render_template,request
 import psycopg2
-from psycopg2 import sql
 
 app = Flask(__name__)	
 
