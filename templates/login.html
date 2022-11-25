@@ -6,6 +6,12 @@
     <form method="post" action="/form/log">
         <input type="text" name=formusername placeholder="Username" required="required" />
         <input type="password" name=formpass placeholder="Password" required="required" />
+        <select name="formdb" placeholder="Data Base" required="required">
+            <option value="selecciona">Selecciona una Base de datos</option>
+            <option value="appweb-db">appweb-db</option>
+            <option value="prueba">prueba</option>
+            <option value="prueba1">prueba1</option>
+        </select>
         <button type="submit" class="btn btn-primary btn-block btn-large">Log in.</button>
     </form>
     <p style="color: rgb(141, 22, 22)">{{errormesaje}}</p>

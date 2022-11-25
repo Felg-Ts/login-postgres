@@ -20,17 +20,19 @@ def ids(appd):
         listadatos = []
         usernameform = request.form.get("formusername")
         passform = request.form.get("formpass")
+        dbform = request.form.get("formdb")
 
         try:
             connection = psycopg2.connect(
             host="192.168.50.31",
-            database="appweb-db",
-            user="appwebuser",
-            password="appwebpass"
+            database=f"{dbform}",
+            user=f"{usernameform}",
+            password=f"{passform}"
             )
             print("Conexión realizada")
             cursor=connection.cursor()        
-            cursor.execute(f"select username from users where username='{usernameform}' and password=md5('{passform}')")
+            #cursor.execute(f"select username from users where username='{usernameform}' and password=md5('{passform}')")
+            cursor.execute("select * from users;")
             row=cursor.fetchall()
             for rows in row:
                 listadatos.append(rows)
@@ -51,13 +53,14 @@ def ids(appd):
             try:
                 connection = psycopg2.connect(
                  host="192.168.50.31",
-                 database="appweb-db",
-                 user="appwebuser",
-                 password="appwebpass"
+                 database=f"{dbform}",
+                 user=f"{usernameform}",
+                 password=f"{passform}"
                 )
                 print("Conexión realizada")
                 cursor=connection.cursor()        
-                cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre and users.username='{usernameform}'")
+                #cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre and users.username='{usernameform}'")
+                cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre")
                 row=cursor.fetchall()
                 for rows in row:
                     listadatos.append(rows)
