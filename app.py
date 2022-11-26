@@ -16,19 +16,21 @@ def inicio():
 def ids(appd):
 
     if appd == "log":
-        
-        validation = 0
-        listadatos = []
         usernameform = request.form.get("formusername")
         passform = request.form.get("formpass")
         dbform = request.form.get("formdb")
-        while usernameform == 'scott' or  usernameform == 'appwebuser' or  usernameform == 'postgres' and validation == 0:
+
+        while usernameform == 'scott' or  usernameform == 'appwebuser' or  usernameform == 'postgres':
+            
             if usernameform == 'scott' and passform == 'tigger' and dbform == 'scott':
                 validation = 1
+                print('Error1')
             elif usernameform == 'appwebuser' and passform == 'appwebpass' and dbform == 'appweb-db':
                 validation = 1
+                print('Error2')
             elif usernameform == 'postgres' and passform == 'postgres' and dbform == 'scott' or dbform == 'appweb-db':
                 validation = 1
+                print('Error3')
             else:
                 return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
         else:
