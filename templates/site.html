@@ -6,7 +6,23 @@
     <table>
         <thead><tr><th>Nombre-usuario</th><th>Modulo</th><th>Horas_Semanales</th><th>Profesor</th></tr></thead>
         <tbody>
-            {% for a in listadatos %}
+            {% for a in tablausers %}
+            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead><tr><th>Nombre-usuario</th><th>Modulo</th><th>Horas_Semanales</th><th>Profesor</th></tr></thead>
+        <tbody>
+            {% for a in tablamod %}
+            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead><tr><th>Nombre-usuario</th><th>Modulo</th><th>Horas_Semanales</th><th>Profesor</th></tr></thead>
+        <tbody>
+            {% for a in tablamat %}
             <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</a></td></tr>
             {% endfor %}
         </tbody>

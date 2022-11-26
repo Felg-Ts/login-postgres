@@ -91,7 +91,7 @@ def ids(appd):
         if len(tablausers) == 0 or len(tablamod) == 0 or len(tablamat) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
 
-        return render_template("site.html",titulo="site",listadatos=listadatos,rutaid=rutaid,nombre=nombre)
+        return render_template("site.html",titulo="site",tablausers=tablausers,tablamod=tablamod,tablamat=tablamat,rutaid=rutaid,nombre=nombre)
 
 if __name__ == '__main__':
     app.run("0.0.0.0",5000,debug=True)
