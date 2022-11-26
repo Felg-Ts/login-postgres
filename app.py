@@ -40,7 +40,7 @@ def ids(appd):
             
             if usernameform == 'scott' and dbform == 'scott':
                 validation2 = "1"
-            elif usernameform == 'appwebuser' dbform == 'appweb-db':
+            elif usernameform == 'appwebuser' and dbform == 'appweb-db':
                 validation2 = "1"
             elif usernameform == 'postgres' and dbform == 'scott' or dbform == 'appweb-db':
                 validation2 = "1"
