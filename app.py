@@ -30,12 +30,12 @@ def ids(appd):
             password=f"{passform}"
             )
             print("Conexión realizada")
-            cursor=connection.cursor()        
-            #cursor.execute(f"select username from users where username='{usernameform}' and password=md5('{passform}')")
-            cursor.execute("select * from users;")
-            row=cursor.fetchall()
-            for rows in row:
-                listadatos.append(rows)
+#            cursor=connection.cursor()       
+#            #cursor.execute(f"select username from users where username='{usernameform}' and password=md5('{passform}')")
+#            cursor.execute("select * from users;")
+#            row=cursor.fetchall()
+#            for rows in row:
+#                listadatos.append(rows)
         except Exception as ex:
             print(ex)
         finally:
@@ -43,7 +43,7 @@ def ids(appd):
             print("Conexión finalizada.")
     
         if len(listadatos) == 0:
-                return render_template("login.html",titulo="Login",errormesaje="usuario o contraseña incorrecto")
+                return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
 
         else:
             listadatos = []
