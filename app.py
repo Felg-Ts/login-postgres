@@ -47,7 +47,6 @@ def ids(appd):
 
         tablaemp = []
 
-        
         rutaid = "/dma/"
 
         try:
@@ -83,10 +82,10 @@ def ids(appd):
             connection.close()
             print("Conexión finalizada.")
 
-        if len(tablausers) == 0 or len(tablamod) == 0 or len(tablamat) == 0:
+        if len(tabladept) == 0 or len(tablaemp) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
 
-        return render_template("site.html",titulo="site",tabladept=tabladept,tablaemp=tablaemp,rutaid=rutaid,nombre=nombre)
+        return render_template("site.html",titulo="site",tabladept=tabladept,tablaemp=tablaemp,rutaid=rutaid)
 
 if __name__ == '__main__':
     app.run("0.0.0.0",5000,debug=True)
