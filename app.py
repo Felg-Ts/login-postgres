@@ -46,8 +46,6 @@ def ids(appd):
             password=f"{passform}"
             )
             
-connection = psycopg2.connect(host="192.168.50.31", database=f"{scott}", user=f"{scott}",password=f"{tigger}")
-
             print("Conexión realizada")
         except Exception as ex:
             #print(ex)
