@@ -37,8 +37,11 @@ def ids(appd):
 #            for rows in row:
 #                listadatos.append(rows)
         except Exception as ex:
-            #print(ex)
-            return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
+            #print(ex)       
+            if dbform = 'selecciona':
+                return render_template("login.html",titulo="Login",errormesaje="Seleccione una base de datos")
+            else:
+                return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
         finally:
             connection.close()
             print("Conexión finalizada.")
@@ -80,6 +83,7 @@ def ids(appd):
                     return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
 
                 return render_template("site-scott.html",titulo="scott",tabladept=tabladept,tablaemp=tablaemp,rutaid=rutaid)
+
             elif dbform == 'appweb-db':
 
                 cursor.execute("select * from users;")
@@ -97,7 +101,7 @@ def ids(appd):
                 for rows in row:
                     tablamat.append(rows)
 
-                if len(tabladept) == 0 or len(tablaemp) == 0:
+                if len(tablausr) == 0 or len(tablamod) == 0 or len(tablamat) == 0:
                     return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
 
                 return render_template("site-appweb.html",titulo="appweb",tablausr=tablausr,tablamat=tablamat,tablamod=tablamod,rutaid=rutaid)
