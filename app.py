@@ -27,11 +27,11 @@ def ids(appd):
         
         while validation1 == "0":
             
-            if usernameform == 'scott' and passform == 'tigger' and dbform == 'scott':
+            if usernameform == 'scott' and passform == 'tigger':
                 validation1 = "1"
-            elif usernameform == 'appwebuser' and passform == 'appwebpass' and dbform == 'appweb-db':
+            elif usernameform == 'appwebuser' and passform == 'appwebpass':
                 validation1 = "1"
-            elif usernameform == 'postgres' and passform == 'postgres' and dbform == 'scott' or dbform == 'appweb-db':
+            elif usernameform == 'postgres' and passform == 'postgres':
                 validation1 = "1"
             else:
                 return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
