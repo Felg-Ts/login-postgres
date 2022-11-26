@@ -38,14 +38,20 @@ def ids(appd):
 
         while validation2 == "0":
             
-            if usernameform == 'scott' and dbform == 'scott':
-                validation2 = "1"
-            elif usernameform == 'appwebuser' and dbform == 'appweb-db':
-                validation2 = "1"
-            elif usernameform == 'postgres' and dbform == 'scott' or dbform == 'appweb-db':
-                validation2 = "1"
-            else:
+            if usernameform == 'scott' and dbform != 'scott':
+                #validation2 = "1"
+                print('error1')
                 return render_template("login.html",titulo="Login",errormesaje=f"El usuario {usernameform} no tiene acceso a la base de datos {dbform}")
+            elif usernameform == 'appwebuser' and dbform != 'appweb-db':
+                #validation2 = "1"
+                print('error4')
+                return render_template("login.html",titulo="Login",errormesaje=f"El usuario {usernameform} no tiene acceso a la base de datos {dbform}")
+            elif usernameform == 'postgres' and dbform != 'scott' or dbform != 'appweb-db':
+                #validation2 = "1"
+                print('error3')
+                return render_template("login.html",titulo="Login",errormesaje=f"El usuario {usernameform} no tiene acceso a la base de datos {dbform}")
+            #else:
+            #    return render_template("login.html",titulo="Login",errormesaje=f"El usuario {usernameform} no tiene acceso a la base de datos {dbform}")
 
         try:
             connection = psycopg2.connect(
