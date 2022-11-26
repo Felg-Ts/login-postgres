@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{titulo}}{% endblock %}
+{% block body %}
+<h1>DB appweb</h1>
+<div class="datagrid">
+    <table>
+        <thead><tr><th>deptno</th><th>dname</th><th>loc</th></tr></thead>
+        <tbody>
+            {% for a in tablausr %}
+            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <table>
+        <thead><tr><th>empno</th><th>ename</th><th>job</th><th>mgr</th><th>hiredate</th><th>sal</th><th>comm</th><th>deptno</th></tr></thead>
+        <tbody>
+            {% for a in tablamod %}
+            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</td><td>{{ a[4] }}</td><td>{{ a[5] }}</td><td>{{ a[6] }}</td><td>{{ a[7] }}</a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead><tr><th>empno</th><th>ename</th><th>job</th><th>mgr</th><th>hiredate</th><th>sal</th><th>comm</th><th>deptno</th></tr></thead>
+        <tbody>
+            {% for a in tablamat %}
+            <tr class="alt"><td >{{ a[0] }}</td><td>{{ a[1] }}</td><td>{{ a[2] }}</td><td>{{ a[3] }}</td><td>{{ a[4] }}</td><td>{{ a[5] }}</td><td>{{ a[6] }}</td><td>{{ a[7] }}</a></td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
