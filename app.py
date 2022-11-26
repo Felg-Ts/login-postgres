@@ -43,11 +43,10 @@ def ids(appd):
             connection.close()
             print("Conexión finalizada.")
     
-        tablausers = []
+        tabladept = []
 
-        tablamod = []
+        tablaemp = []
 
-        tablamat = []
         
         rutaid = "/dma/"
 
@@ -62,20 +61,16 @@ def ids(appd):
             cursor=connection.cursor()
             if dbform == 'scott':
 
-                cursor.execute("select * from users;")
+                cursor.execute("select * from dept;")
                 row=cursor.fetchall()
                 for rows in row:
-                    tablausers.append(rows)
+                    tabladept.append(rows)
 
-                cursor.execute("select * from modulos;")
+                cursor.execute("select * from emp;")
                 row=cursor.fetchall()
                 for rows in row:
-                    tablamod.append(rows)
+                    tablaemp.append(rows)
 
-                cursor.execute("select * from matriculaciones;")
-                row=cursor.fetchall()
-                for rows in row:
-                    tablamat.append(rows)
                 #cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre and users.username='{usernameform}'")
                 #cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre")
                 #row=cursor.fetchall()
@@ -91,7 +86,7 @@ def ids(appd):
         if len(tablausers) == 0 or len(tablamod) == 0 or len(tablamat) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
 
-        return render_template("site.html",titulo="site",tablausers=tablausers,tablamod=tablamod,tablamat=tablamat,rutaid=rutaid,nombre=nombre)
+        return render_template("site.html",titulo="site",tabladept=tabladept,tablaemp=tablaemp,rutaid=rutaid,nombre=nombre)
 
 if __name__ == '__main__':
     app.run("0.0.0.0",5000,debug=True)
