@@ -37,44 +37,41 @@ def ids(appd):
 #            for rows in row:
 #                listadatos.append(rows)
         except Exception as ex:
-            print(ex)
+            #print(ex)
+            return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
         finally:
             connection.close()
             print("Conexión finalizada.")
     
-        if len(listadatos) == 0:
-                return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
+        listadatos = []
 
-        else:
-            listadatos = []
+        rutaid = "/dma/"
 
-            rutaid = "/dma/"
+        try:
+            connection = psycopg2.connect(
+            host="192.168.50.31",
+            database=f"{dbform}",
+            user=f"{usernameform}",
+            password=f"{passform}"
+            )
+            print("Conexión realizada")
+            cursor=connection.cursor()
+            if dbform == 'scott':
 
-            try:
-                connection = psycopg2.connect(
-                 host="192.168.50.31",
-                 database=f"{dbform}",
-                 user=f"{usernameform}",
-                 password=f"{passform}"
-                )
-                print("Conexión realizada")
-                cursor=connection.cursor()
-                if dbform == 'scott':
+                cursor.execute("select * from users;")
+                row=cursor.fetchall()
+                for rows in row:
+                    tablausers.append(rows)
 
-                    cursor.execute("select * from users;")
-                    row=cursor.fetchall()
-                    for rows in row:
-                        tablausers.append(rows)
+                cursor.execute("select * from modulos;")
+                row=cursor.fetchall()
+                for rows in row:
+                    tablamod.append(rows)
 
-                    cursor.execute("select * from modulos;")
-                    row=cursor.fetchall()
-                    for rows in row:
-                        tablamod.append(rows)
-
-                    cursor.execute("select * from matriculaciones;")
-                    row=cursor.fetchall()
-                    for rows in row:
-                        tablamat.append(rows)
+                cursor.execute("select * from matriculaciones;")
+                row=cursor.fetchall()
+                for rows in row:
+                    tablamat.append(rows)
                 #cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre and users.username='{usernameform}'")
                 #cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre")
                 #row=cursor.fetchall()
