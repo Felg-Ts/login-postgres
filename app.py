@@ -16,7 +16,8 @@ def inicio():
 def ids(appd):
 
     if appd == "log":
-        validation = "0"
+        validation1 = "0"
+        validation2 = "0"
         usernameform = request.form.get("formusername")
         passform = request.form.get("formpass")
         dbform = request.form.get("formdb")
@@ -24,19 +25,27 @@ def ids(appd):
         while usernameform != 'scott' and  usernameform != 'appwebuser' and  usernameform != 'postgres':
             return render_template("login.html",titulo="Login",errormesaje="El usuario no existe")
         
-        while validation == "0":
+        while validation1 == "0":
             
             if usernameform == 'scott' and passform == 'tigger' and dbform == 'scott':
-                validation = "1"
-                print('Error1')
+                validation1 = "1"
             elif usernameform == 'appwebuser' and passform == 'appwebpass' and dbform == 'appweb-db':
-                validation = "1"
-                print('Error2')
+                validation1 = "1"
             elif usernameform == 'postgres' and passform == 'postgres' and dbform == 'scott' or dbform == 'appweb-db':
-                validation = "1"
-                print('Error3')
+                validation1 = "1"
             else:
                 return render_template("login.html",titulo="Login",errormesaje="usuario, contraseña o base de datos incorrecta")
+
+        while validation2 == "0":
+            
+            if usernameform == 'scott' and dbform == 'scott':
+                validation2 = "1"
+            elif usernameform == 'appwebuser' dbform == 'appweb-db':
+                validation2 = "1"
+            elif usernameform == 'postgres' and dbform == 'scott' or dbform == 'appweb-db':
+                validation2 = "1"
+            else:
+                return render_template("login.html",titulo="Login",errormesaje=f"El usuario {usernameform} no tiene acceso a la base de datos {dbform}")
 
         try:
             connection = psycopg2.connect(
