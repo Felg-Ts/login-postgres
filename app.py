@@ -47,6 +47,12 @@ def ids(appd):
 
         tablaemp = []
 
+        tablausr = []
+
+        tablamat = []
+
+        tablamod = []
+
         rutaid = "/dma/"
 
         try:
@@ -70,12 +76,31 @@ def ids(appd):
                 for rows in row:
                     tablaemp.append(rows)
 
-                #cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre and users.username='{usernameform}'")
-                #cursor.execute(f"select username,nombre,horas_semanales,profesor from users,modulos,matriculaciones where matriculaciones.alumnos=users.id and matriculaciones.modulos=modulos.nombre")
-                #row=cursor.fetchall()
-                #for rows in row:
-                #    listadatos.append(rows)
-                #nombre= listadatos[0][0]
+                if len(tabladept) == 0 or len(tablaemp) == 0:
+                    return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
+
+                return render_template("site-scott.html",titulo="scott",tabladept=tabladept,tablaemp=tablaemp,rutaid=rutaid)
+            elif dbform == 'appweb-db':
+
+                cursor.execute("select * from users;")
+                row=cursor.fetchall()
+                for rows in row:
+                    tablausr.append(rows)
+
+                cursor.execute("select * from modulos;")
+                row=cursor.fetchall()
+                for rows in row:
+                    tablamod.append(rows)
+            
+                cursor.execute("select * from matriculaciones;")
+                row=cursor.fetchall()
+                for rows in row:
+                    tablamat.append(rows)
+
+                if len(tabladept) == 0 or len(tablaemp) == 0:
+                    return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
+
+                return render_template("site-appweb.html",titulo="appweb",tablausr=tablausr,tablamat=tablamat,tablamod=tablamod,rutaid=rutaid)
         except Exception as ex:
             print(ex)
         finally:
