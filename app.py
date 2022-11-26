@@ -78,16 +78,16 @@ def ids(appd):
                 #for rows in row:
                 #    listadatos.append(rows)
                 #nombre= listadatos[0][0]
-            except Exception as ex:
-                print(ex)
-            finally:
-                connection.close()
-                print("Conexión finalizada.")
+        except Exception as ex:
+            print(ex)
+        finally:
+            connection.close()
+            print("Conexión finalizada.")
 
-            if len(listadatos) == 0:
-                return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
+        if len(listadatos) == 0:
+            return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Los caracteres introducidos no coinciden con ningún nombre. Recuerde que la primera letra de la ciudad tiene que ser en mayúsculas",urlform="/forms/dma")
 
-            return render_template("site.html",titulo="site",listadatos=listadatos,rutaid=rutaid,nombre=nombre)
+        return render_template("site.html",titulo="site",listadatos=listadatos,rutaid=rutaid,nombre=nombre)
 
 if __name__ == '__main__':
     app.run("0.0.0.0",5000,debug=True)
