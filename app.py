@@ -43,8 +43,12 @@ def ids(appd):
             connection.close()
             print("Conexión finalizada.")
     
-        listadatos = []
+        tablausers = []
 
+        tablamod = []
+
+        tablamat = []
+        
         rutaid = "/dma/"
 
         try:
@@ -84,7 +88,7 @@ def ids(appd):
             connection.close()
             print("Conexión finalizada.")
 
-        if len(listadatos) == 0:
+        if len(tablausers) == 0 or len(tablamod) == 0 or len(tablamat) == 0:
             return render_template("error404.html",titulo="Error404",titulo2="Error404",errormesaje="Error")
 
         return render_template("site.html",titulo="site",listadatos=listadatos,rutaid=rutaid,nombre=nombre)
